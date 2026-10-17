@@ -12,6 +12,7 @@ public final class JDBCDataSource {
 	private ComboPooledDataSource cdps = null;
 
 	private JDBCDataSource() {
+		// combopoolData source constructor call kiya h
 		cdps = new ComboPooledDataSource();
 		try {
 			cdps.setDriverClass("com.mysql.cj.jdbc.Driver");

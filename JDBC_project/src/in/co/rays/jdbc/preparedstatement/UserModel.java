@@ -11,6 +11,35 @@ import java.util.List;
 
 //modal Data Access Logic perform karta h 
 public class UserModel {
+	
+	public int nextPk() throws SQLException {
+		
+		Connection conn = null;
+		int pk = 0;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing", "root", "root");
+
+			PreparedStatement pstmt = conn.prepareStatement("select max(id) from st_user");
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				pk = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			conn.close();
+		}
+
+		return pk + 1;
+
+		
+	}
+	
 	public void add(UserBean bean) throws Exception {
 		Connection conn = null;
 
@@ -30,7 +59,8 @@ public class UserModel {
 
 			PreparedStatement pstmt = conn.prepareStatement("insert into st_user values(?,?,?,?,?,?)");
 
-			pstmt.setInt(1, bean.getId());
+			pstmt.setInt(1, nextPk());
+//			pstmt.setInt(1, bean.getId());
 			pstmt.setString(2, bean.getFirstName());
 			pstmt.setString(3, bean.getLastName());
 			pstmt.setString(4, bean.getLonginId());

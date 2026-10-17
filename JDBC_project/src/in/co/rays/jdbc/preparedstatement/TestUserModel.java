@@ -22,7 +22,7 @@ public class TestUserModel {
 		UserModel model = new UserModel();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
 
-		bean.setId(26);
+//		bean.setId(26);
 		bean.setFirstName("Krishna");
 		bean.setLastName("Yadav");
 		bean.setLonginId("Krishna@gmail.com");
