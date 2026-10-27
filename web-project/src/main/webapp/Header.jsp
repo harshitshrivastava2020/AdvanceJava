@@ -12,6 +12,7 @@
 	<a href="LoginCtl">SignIn</a> | 
 	<a href="UserRegistrationCtl">SignUp</a> | 
 	<a href="WelcomeCtl">welcome</a> | 
+	<a href="MarksheetCtl">Marksheet</a> | 
  
 	<hr>
 </body>

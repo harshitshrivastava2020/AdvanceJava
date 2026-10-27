@@ -8,7 +8,7 @@
 </head>
 <body>
 	<%@ include file="Header.jsp"%>
-	<form action="" method="post">
+	<form action="LoginCtl" method="post">
 		<div align="center">
 
 			<h1>Login</h1>

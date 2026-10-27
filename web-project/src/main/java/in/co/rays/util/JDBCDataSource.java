@@ -18,11 +18,11 @@ public final class JDBCDataSource {
 
 		cdps = new ComboPooledDataSource();
 		try {
-			cdps.setDriverClass("driver");
-			cdps.setJdbcUrl("url");
-//			cdps.setJdbcUrl("ModuleUrl");
-			cdps.setUser("username");
-			cdps.setPassword("password");
+			cdps.setDriverClass(rb.getString("driver"));
+			cdps.setJdbcUrl(rb.getString("url"));
+//			cdps.setJdbcUrl(rb.getString("ModuleUrl"));
+			cdps.setUser(rb.getString("username"));
+			cdps.setPassword(rb.getString("password"));
 			cdps.setMaxPoolSize(30);
 			cdps.setMinPoolSize(10);
 			cdps.setInitialPoolSize(10);

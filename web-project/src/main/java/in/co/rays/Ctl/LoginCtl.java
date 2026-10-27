@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.co.rays.bean.UserBean;
+import in.co.rays.model.UserModel;
+
 @WebServlet("/LoginCtl")
 public class LoginCtl extends HttpServlet {
 
@@ -23,10 +26,27 @@ public class LoginCtl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		UserBean bean = new UserBean();
+		UserModel model = new UserModel();
+
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 
 		System.out.println(login + "\n" + password + "\n");
+
+		try {
+			bean = model.authenticate(login, password);
+
+			if (bean != null) {
+				System.out.println("user successfully login");
+			} else {
+				System.out.println("Invalid Creadentials");
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		RequestDispatcher rd = request.getRequestDispatcher("LoginView.jsp");
 		rd.forward(request, response);
 	}
