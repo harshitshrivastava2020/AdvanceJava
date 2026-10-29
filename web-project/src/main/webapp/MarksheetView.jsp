@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +9,10 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	<div align="center">
-		<form action="MarksheetCtl" method="post">
+		<form action="MarkSheetCtl" method="post">
 			<div align="center">
 
-				<h1>User Marksheet</h1>
+				<h1>User MarkSheet</h1>
 
 				<table>
 

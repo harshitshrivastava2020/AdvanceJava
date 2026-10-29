@@ -1,6 +1,6 @@
 package in.co.rays.bean;
 
-public class MarksheetBean {
+public class MarkSheetBean {
 	private int id;
 	private int rollNo;
 	private String name;
@@ -12,48 +12,48 @@ public class MarksheetBean {
 		this.id = id;
 	}
 
-	public int getRollNo() {
-		return rollNo;
+	public int getId() {
+		return id;
 	}
 
 	public void setRollNo(int rollNo) {
 		this.rollNo = rollNo;
 	}
 
-	public String getName() {
-		return name;
+	public int getRollNo() {
+		return rollNo;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public int getPhysics() {
-		return physics;
+	public String getName() {
+		return name;
 	}
 
 	public void setPhysics(int physics) {
 		this.physics = physics;
 	}
 
-	public int getChemistry() {
-		return chemistry;
+	public int getPhysics() {
+		return physics;
 	}
 
 	public void setChemistry(int chemistry) {
 		this.chemistry = chemistry;
 	}
 
-	public int getMaths() {
-		return maths;
+	public int getChemistry() {
+		return chemistry;
 	}
 
 	public void setMaths(int maths) {
 		this.maths = maths;
 	}
 
-	public int getId() {
-		return id;
+	public int getMaths() {
+		return maths;
 	}
-}
 
+}

@@ -2,3 +2,8 @@ body {
     background-color: rgb(191, 128, 255);
     color: white;
 }
+.main-header {
+	    background-color: white !important;
+	        color: black;
+	    
+}

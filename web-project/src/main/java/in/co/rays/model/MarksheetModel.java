@@ -1,14 +1,16 @@
 package in.co.rays.model;
 
+
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import in.co.rays.bean.MarksheetBean;
+import in.co.rays.bean.MarkSheetBean;
 import in.co.rays.util.JDBCDataSource;
 
-public class MarksheetModel {
+public class MarkSheetModel {
 	
 	public int nextPk() throws SQLException {
 		
@@ -17,7 +19,7 @@ public class MarksheetModel {
 		try {
 			conn = JDBCDataSource.getConnection();
 
-			PreparedStatement pstmt = conn.prepareStatement("select max(id) from st_marksheet");
+			PreparedStatement pstmt = conn.prepareStatement("select max(id) from marksheet");
 
 			ResultSet rs = pstmt.executeQuery();
 
@@ -36,7 +38,7 @@ public class MarksheetModel {
 		
 	}
 	
-	public void add(MarksheetBean bean) throws Exception {
+	public void add(MarkSheetBean bean) throws Exception {
 		Connection conn = null;
 		try {
 
@@ -44,7 +46,7 @@ public class MarksheetModel {
 
 			conn.setAutoCommit(false);
 
-			PreparedStatement pstmt = conn.prepareStatement("insert into st_marksheet values(?,?,?,?,?,?)");
+			PreparedStatement pstmt = conn.prepareStatement("insert into marksheet values(?,?,?,?,?,?)");
 
 			pstmt.setInt(1, nextPk());
 			pstmt.setInt(2, bean.getRollNo());
@@ -65,14 +67,14 @@ public class MarksheetModel {
 		}
 	}
 
-	public void update(MarksheetBean bean) throws Exception {
+	public void update(MarkSheetBean bean) throws Exception {
 		Connection conn = null;
 		try {
 			conn = JDBCDataSource.getConnection();
 			conn.setAutoCommit(false);
 
 			PreparedStatement pstmt = conn.prepareStatement(
-					"update st_marksheet set rollNo = ?, name = ?, phy = ?, chm = ?, maths = ? where id = ?");
+					"update marksheet set rollNo = ?, name = ?, phy = ?, chm = ?, maths = ? where id = ?");
 			pstmt.setInt(1, bean.getRollNo());
 			pstmt.setString(2, bean.getName());
 			pstmt.setInt(3, bean.getPhysics());
@@ -101,7 +103,7 @@ public class MarksheetModel {
 
 			conn.setAutoCommit(false);
 
-			PreparedStatement pstmt = conn.prepareStatement("delete from st_marksheet where id = ?");
+			PreparedStatement pstmt = conn.prepareStatement("delete from marksheet where id = ?");
 
 			pstmt.setInt(1, id);
 
@@ -118,21 +120,21 @@ public class MarksheetModel {
 		}
 	}
 
-	public MarksheetBean findByPk(int id) throws Exception {
+	public MarkSheetBean findByPk(int id) throws Exception {
 		Connection conn = null;
-		MarksheetBean bean = null;
+		MarkSheetBean bean = null;
 
 		try {
 			conn = JDBCDataSource.getConnection();
 
-			PreparedStatement pstmt = conn.prepareStatement("select * from st_marksheet where id=?");
+			PreparedStatement pstmt = conn.prepareStatement("select * from marksheet where id=?");
 
 			pstmt.setInt(1, id);
 
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				bean = new MarksheetBean();
+				bean = new MarkSheetBean();
 				bean.setId(rs.getInt("id"));
 				bean.setRollNo(rs.getInt("rollNo"));
 				bean.setName(rs.getString("name"));
@@ -148,22 +150,22 @@ public class MarksheetModel {
 		return bean;
 	}
 	
-	public MarksheetBean findByRollNo(int rollNo) throws Exception {
+	public MarkSheetBean findByRollNo(int rollNo) throws Exception {
 		Connection conn = null;
-		MarksheetBean bean = null;
+		MarkSheetBean bean = null;
 
 		try {
 
 			conn = JDBCDataSource.getConnection();
 
-			PreparedStatement pstmt = conn.prepareStatement("select * from st_marksheet where rollNo=?");
+			PreparedStatement pstmt = conn.prepareStatement("select * from marksheet where rollNo=?");
 
 			pstmt.setInt(1, rollNo);
 
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				bean = new MarksheetBean();
+				bean = new MarkSheetBean();
 				bean.setId(rs.getInt("id"));
 				bean.setRollNo(rs.getInt("rollNo"));
 				bean.setName(rs.getString("name"));
@@ -179,4 +181,5 @@ public class MarksheetModel {
 		return bean;
 	} 
 }
+
 

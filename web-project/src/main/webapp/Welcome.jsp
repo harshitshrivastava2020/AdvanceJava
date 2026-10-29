@@ -9,8 +9,10 @@
 <body>
 	<%@ include file="Header.jsp"%>
 	<div align="center">
-		<h1>Welcome to User Management System</h1>
+		<h1>
+			Welcome to User Management System(<%=user != null ? user.getFirstName() : "Guest"%>)
+		</h1>
 	</div>
-	<%@ include file="Footer.jsp" %>
+	<%@ include file="Footer.jsp"%>
 </body>
 </html>
