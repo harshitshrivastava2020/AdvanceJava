@@ -1,9 +1,228 @@
 body {
-    background-color: rgb(191, 128, 255);
-    color: white;
+	margin: 0;
+	padding: 0;
+	background-color: #ffffff;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Helvetica, Arial, sans-serif;
+	/* Optional: Makes text rendering slightly crisper on modern browsers */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
-.main-header {
-	    background-color: white !important;
-	        color: black;
-	    
+
+/* content of page style */
+.content-list-data {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 7%;
+}
+
+/* Header style */
+.header-bg {
+	background-color: #009879;
+	color: black !important;
+	/*padding-left: 15px;*/
+	padding: 15px 15px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.header-bg h2 {
+	margin-top: 5px;
+	color: #ffffff;
+}
+
+.header-bg a {
+	text-decoration: none;
+	color: #ffffff;
+}
+
+.header-bg .pipe {
+	color: #ffffff;
+	margin: 0 5px;
+}
+
+/* footer style  */
+.footer {
+	background-color: #009879 !important;
+	color: black !important;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	padding: 10px 0;
+	box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.22);
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer h3 {
+	color: #ffffff;
+}
+
+/* table style */
+.content-table {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	min-width: 400px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+	background-color: #009879;
+	color: #ffffff;
+	text-align: left;
+	font-weight: bold;
+}
+
+.content-table th, .content-table td {
+	padding: 12px 15px;
+}
+
+.content-table tbody tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+	background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+	border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+	font-weight: bold;
+	color: #009879;
+}
+
+/* form styles*/
+
+/* Container to properly position the form beneath the header banner */
+.form-container-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5%;
+	margin-bottom: 80px; /* Prevents overlap with fixed footer */
+}
+
+/* Card layout wrapper matching the table design */
+.form-table-card {
+	background: #ffffff;
+	min-width: 450px;
+	border-radius: 8px ;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/* The solid teal top header block matching table headers */
+.form-header {
+	background-color: #009879;
+	color: #ffffff;
+	padding: 15px 20px;
+	text-align: center;
+}
+
+.form-header h2 {
+	margin: 0;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+/* Internal clean layout configuration matching the table borders */
+.form-content-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.95em;
+}
+
+.form-content-table th {
+	background-color: #ffffff;
+	color: #333333;
+	text-align: left;
+	padding: 10px 15px;
+	font-weight: 600;
+	width: 35%;
+}
+
+.form-content-table td {
+	padding: 12px 20px;
+}
+
+.form-content-table tr {
+	border-bottom: 1px solid #dddddd;
+}
+
+
+/* Cleaner form control input text areas */
+.form-content-table input[type="text"], .form-content-table input[type="number"]
+	{
+	width: 90%;
+	padding: 5px 12px;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	font-size: 0.95em;
+	outline: none;
+	transition: border-color 0.2s ease;
+}
+
+.form-content-table input[type="text"]:focus, .form-content-table input[type="number"]:focus
+	{
+	border-color: #009879;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Form Action Footer Line */
+.form-content-table tr.action-row {
+	border-bottom: 3px solid #009879;
+}
+
+/* Premium styled Action Submission Button */
+.btn-submit {
+	background-color: #009879;
+	color: white;
+	border: none;
+	padding: 10px 24px;
+	font-size: 0.95em;
+	font-weight: bold;
+	border-radius: 4px;
+	cursor: pointer;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+	background-color: #007a61;
+}
+
+/* Success Alert Label */
+.alert-success {
+	background-color: #d4edda;
+	color: #155724;
+	padding: 12px;
+	text-align: center;
+	font-weight: 600;
+	border-bottom: 1px solid #c3e6cb;
+}
+/* Removes the thick teal line from the last row of the form table */
+.form-content-table tr.action-row {
+    border-bottom: none !important;
+}
+
+/* Also ensures no global table rules add a bottom line to your form table */
+.form-content-table {
+    border-bottom: none !important;
 }

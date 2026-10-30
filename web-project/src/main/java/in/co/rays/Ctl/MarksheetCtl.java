@@ -50,6 +50,7 @@ public class MarkSheetCtl extends HttpServlet {
 			bean.setMaths(maths);
 
 			model.add(bean);
+			request.setAttribute("successMsg", "Marksheet record saved successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

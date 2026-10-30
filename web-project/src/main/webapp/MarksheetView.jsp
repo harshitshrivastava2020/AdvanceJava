@@ -7,14 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	String successMsg = (String) request.getAttribute("successMsg");
+	%>
 	<%@ include file="Header.jsp"%>
-	<div align="center">
-		<form action="MarkSheetCtl" method="post">
+	<div class="form-container-wrapper" align="center">
+		<form action="MarkSheetCtl" method="post" class="form-table-card">
 			<div align="center">
 
-				<h1>User MarkSheet</h1>
+			<div class="form-header">
+				<h2>User MarkSheet</h2>
+			</div>
+				<%=successMsg != null ? "<h2 class='alert-success'>"+ successMsg + "</h2>" : ""%>
 
-				<table>
+				<table class="form-content-table">
 
 					<tr>
 						<th>Name</th>
@@ -33,7 +39,7 @@
 					</tr>
 					<tr>
 						<th>Chemistry Marks</th>
-						<td><input type="numder" name="chemistry" value=""
+						<td><input type="number" name="chemistry" value=""
 							placeholder="enter chemistry marks"></td>
 					</tr>
 					<tr>
@@ -42,9 +48,9 @@
 							placeholder="enter maths marks"></td>
 					</tr>
 
-					<tr>
+					<tr class="action-row">
 						<th></th>
-						<td><input type="submit" name="operation" value="save"></td>
+						<td><input type="submit" name="operation" value="save" class="btn-submit"></td>
 				</table>
 
 			</div>
