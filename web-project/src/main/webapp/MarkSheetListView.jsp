@@ -15,9 +15,11 @@
 	<%
 	List<MarkSheetBean> list = (List) request.getAttribute("marksheetList");
 	Iterator<MarkSheetBean> it = list.iterator();
+	int pageNo = (int) request.getAttribute("pageNo");
 	%>
 	<%@ include file="Header.jsp"%>
-	<form>
+	<form action="MarkSheetListCtl" method="post">
+		<input type="hidden" name="pageNo" value="<%=pageNo%>">
 		<div class="content-list-data" align="center">
 			<table class="content-table" width="70%">
 				<thead>
@@ -50,6 +52,14 @@
 				</tbody>
 			</table>
 		</div>
+		<table width="100%">
+			<tr>
+				<td><input type="submit" name="operation" value="previous"
+					<%=pageNo == 1 ? "disabled" : ""%>></td>
+				<td align="right"><input type="submit" name="operation"
+					value="next" <%=list.size() < 5 ? "disabled" : "" %>></td>
+			</tr>
+		</table>
 	</form>
 	<%@ include file="Footer.jsp"%>
 </body>
