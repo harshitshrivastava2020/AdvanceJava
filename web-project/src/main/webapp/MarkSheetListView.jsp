@@ -21,45 +21,51 @@
 	<form action="MarkSheetListCtl" method="post">
 		<input type="hidden" name="pageNo" value="<%=pageNo%>">
 		<div class="content-list-data" align="center">
-			<table class="content-table" width="70%">
-				<thead>
-					<tr class="active-row">
-						<th>Id</th>
-						<th>RollNo</th>
-						<th>Name</th>
-						<th>Physics</th>
-						<th>Chemistry</th>
-						<th>Maths</th>
-					</tr>
-				</thead>
-				<tbody>
+			<div class="table-wrapper-container">
+				<table class="content-table" width="70%">
+					<thead>
+						<tr class="active-row">
+							<th>Id</th>
+							<th>RollNo</th>
+							<th>Name</th>
+							<th>Physics</th>
+							<th>Chemistry</th>
+							<th>Maths</th>
+						</tr>
+					</thead>
+					<tbody>
 
-					<%
-					while (it.hasNext()) {
-						MarkSheetBean bean = it.next();
-					%>
+						<%
+						while (it.hasNext()) {
+							MarkSheetBean bean = it.next();
+						%>
+						<tr>
+							<td><%=bean.getId()%></td>
+							<td><%=bean.getRollNo()%></td>
+							<td><%=bean.getName()%></td>
+							<td><%=bean.getPhysics()%></td>
+							<td><%=bean.getChemistry()%></td>
+							<td><%=bean.getMaths()%></td>
+						</tr>
+						<%
+						}
+						%>
+					</tbody>
+				</table>
+				<table class="pagination-controls" width="70%">
 					<tr>
-						<td><%=bean.getId()%></td>
-						<td><%=bean.getRollNo()%></td>
-						<td><%=bean.getName()%></td>
-						<td><%=bean.getPhysics()%></td>
-						<td><%=bean.getChemistry()%></td>
-						<td><%=bean.getMaths()%></td>
+						<td align="left"><input type="submit" class="btn-page"
+							name="operation" value="previous"
+							<%=pageNo == 1 ? "disabled" : ""%>></td>
+						<td align="center"><input type="submit" class="btn-page"
+							name="" value="delete"></td>
+						<td align="right"><input type="submit" class="btn-page"
+							name="operation" value="next"
+							<%=list.size() < 5 ? "disabled" : ""%>></td>
 					</tr>
-					<%
-					}
-					%>
-				</tbody>
-			</table>
+				</table>
+			</div>
 		</div>
-		<table width="100%">
-			<tr>
-				<td><input type="submit" name="operation" value="previous"
-					<%=pageNo == 1 ? "disabled" : ""%>></td>
-				<td align="right"><input type="submit" name="operation"
-					value="next" <%=list.size() < 5 ? "disabled" : "" %>></td>
-			</tr>
-		</table>
 	</form>
 	<%@ include file="Footer.jsp"%>
 </body>

@@ -60,7 +60,15 @@ body {
 }
 
 /* table style */
+.table-wrapper-container {
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+}
+
 .content-table {
+	width: 100%;
 	border-collapse: collapse;
 	margin: 25px 0;
 	font-size: 0.9em;
@@ -98,6 +106,49 @@ body {
 	color: #009879;
 }
 
+/* Pushes actions out cleanly to both ends of the container framework */
+.pagination-controls {
+	margin-top: 10px;
+	margin-bottom: 90px;
+	/* Safety margin prevents dropping beneath fixed footer */
+	width: 100%;
+}
+
+/* Styled Action Page Buttons */
+.btn-page {
+	background-color: #009879; /* Matches your teal header theme */
+	color: #ffffff !important; /* Crisp white text color */
+	border: none; /* Removes the ugly default browser border */
+	padding: 10px 24px; /* Gives breathing space inside the button */
+	font-size: 0.9em; /* Clean, easy-to-read text size */
+	font-weight: bold; /* Makes text stand out */
+	border-radius: 4px; /* Adds smooth, modern corners */
+	cursor: pointer; /* Changes pointer to hand icon on hover */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+	/* Adds a subtle drop shadow depth */
+	transition: background-color 0.2s ease, transform 0.1s ease;
+	/* Smooth hover transition effects */
+}
+
+/* Hover state: Button gets darker when user moves mouse over it */
+.btn-page:hover:not(:disabled) {
+	background-color: #007a61;
+}
+
+/* Click state: Button gives a subtle physical press down response */
+.btn-page:active:not(:disabled) {
+	transform: scale(0.96);
+}
+
+/* Automatic look override for disabled inputs (e.g., Previous button on page 1) */
+.btn-page:disabled {
+	background-color: #e0e0e0 !important;
+	/* Elegant light grey background */
+	color: #a0a0a0 !important; /* Muted grey text color */
+	cursor: not-allowed; /* Changes cursor to block sign */
+	box-shadow: none; /* Flattens button shadow depth */
+}
+
 /* form styles*/
 
 /* Container to properly position the form beneath the header banner */
@@ -113,7 +164,7 @@ body {
 .form-table-card {
 	background: #ffffff;
 	min-width: 450px;
-	border-radius: 8px ;
+	border-radius: 8px;
 	overflow: hidden;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -156,7 +207,6 @@ body {
 	border-bottom: 1px solid #dddddd;
 }
 
-
 /* Cleaner form control input text areas */
 .form-content-table input[type="text"], .form-content-table input[type="number"]
 	{
@@ -174,15 +224,14 @@ body {
 	border-color: #009879;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 /* For Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+	-moz-appearance: textfield;
 }
 
 /* Form Action Footer Line */
@@ -219,10 +268,10 @@ input[type=number] {
 }
 /* Removes the thick teal line from the last row of the form table */
 .form-content-table tr.action-row {
-    border-bottom: none !important;
+	border-bottom: none !important;
 }
 
 /* Also ensures no global table rules add a bottom line to your form table */
 .form-content-table {
-    border-bottom: none !important;
+	border-bottom: none !important;
 }

@@ -29,6 +29,8 @@ public class StudentListCtl extends HttpServlet {
 		try {
 			List<StudentBean> list = model.search(bean, pageNo, pageSize);
 			request.setAttribute("studentList", list);
+			request.setAttribute("pageNo", pageNo);
+
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,6 +45,36 @@ public class StudentListCtl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String op = request.getParameter("operation");
+		System.out.println("op = " + op);
+
+		StudentModel model = new StudentModel();
+		StudentBean bean = new StudentBean();
+		System.out.println("pageNo from view: " + request.getParameter("pageNo"));
+		int pageNo = Integer.parseInt(request.getParameter("pageNo"));
+		System.out.println("pageNo after parse: " + pageNo);
+		int pageSize = 5;
+
+		if (op.equals("previous")) {
+			System.out.println("in previous");
+			pageNo--;
+			System.out.println("pageNo: " + pageNo);
+		}
+		
+		if (op.equals("next")) {
+			System.out.println("in next");
+			pageNo++;
+			System.out.println("pageNo: " + pageNo);
+		}
+		
+		try {
+			List<StudentBean> list = model.search(bean, pageNo, pageSize);
+			request.setAttribute("studentList", list);
+			request.setAttribute("pageNo", pageNo);
+			System.out.println(pageNo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("StudentListView.jsp");
 		rd.forward(request, response);
 	}

@@ -15,45 +15,59 @@
 	<%
 	List<StudentBean> list = (List) request.getAttribute("studentList");
 	Iterator<StudentBean> it = list.iterator();
+	int pageNo = (int) request.getAttribute("pageNo");
 	%>
 	<%@ include file="Header.jsp"%>
 
-	<form>
-		<div class="content-list-data"  align="center">
-			<table class="content-table" width="70%">
-				<thead>
-					<tr class="active-row">
-						<th>Id</th>
-						<th>FirsName</th>
-						<th>LastName</th>
-						<th>Mobile</th>
-						<th>Subject</th>
-						<th>Age</th>
-						<th>Gender</th>
-						<th>City</th>
-					</tr>
-				</thead>
-				<tbody>
+	<form action="StudentListCtl" method="post">
+		<input type="hidden" name="pageNo" value="<%=pageNo%>">
 
-					<%
-					while (it.hasNext()) {
-						StudentBean bean = it.next();
-					%>
+		<div class="content-list-data" align="center">
+			<div class="table-wrapper-container">
+				<table class="content-table" width="70%">
+					<thead>
+						<tr class="active-row">
+							<th>Id</th>
+							<th>FirsName</th>
+							<th>LastName</th>
+							<th>Mobile</th>
+							<th>Subject</th>
+							<th>Age</th>
+							<th>Gender</th>
+							<th>City</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<%
+						while (it.hasNext()) {
+							StudentBean bean = it.next();
+						%>
+						<tr>
+							<td><%=bean.getId()%></td>
+							<td><%=bean.getFirstName()%></td>
+							<td><%=bean.getLastName()%></td>
+							<td><%=bean.getMobile()%></td>
+							<td><%=bean.getSubject()%></td>
+							<td><%=bean.getAge()%></td>
+							<td><%=bean.getGender()%></td>
+							<td><%=bean.getCity()%></td>
+						</tr>
+						<%
+						}
+						%>
+					</tbody>
+				</table>
+				<table class="pagination-controls" width="70%">
 					<tr>
-						<td><%=bean.getId()%></td>
-						<td><%=bean.getFirstName()%></td>
-						<td><%=bean.getLastName()%></td>
-						<td><%=bean.getMobile()%></td>
-						<td><%=bean.getSubject()%></td>
-						<td><%=bean.getAge()%></td>
-						<td><%=bean.getGender()%></td>
-						<td><%=bean.getCity()%></td>
+						<td><input type="submit" class="btn-page" name="operation"
+							value="previous" <%=pageNo == 1 ? "disabled" : ""%>></td>
+						<td align="right"><input type="submit" class="btn-page"
+							name="operation" value="next"
+							<%=list.size() < 5 ? "disabled" : ""%>></td>
 					</tr>
-					<%
-					}
-					%>
-				</tbody>
-			</table>
+				</table>
+			</div>
 		</div>
 	</form>
 	<%@ include file="Footer.jsp"%>
