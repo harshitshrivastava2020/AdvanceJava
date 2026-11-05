@@ -16,6 +16,8 @@
 	List<StudentBean> list = (List) request.getAttribute("studentList");
 	Iterator<StudentBean> it = list.iterator();
 	int pageNo = (int) request.getAttribute("pageNo");
+	String successMsg = (String) request.getAttribute("successMsg");
+	String errorMsg = (String) request.getAttribute("errorMsg");
 	%>
 	<%@ include file="Header.jsp"%>
 
@@ -24,9 +26,12 @@
 
 		<div class="content-list-data" align="center">
 			<div class="table-wrapper-container">
+				<h2 style="color: green; margin-top: -78px"><%=successMsg != null ? successMsg : ""%></h2>
+				<h2 style="color: red"><%=errorMsg != null ? errorMsg : ""%></h2>
 				<table class="content-table" width="70%">
 					<thead>
 						<tr class="active-row">
+							<th>Delete</th>
 							<th>Id</th>
 							<th>FirsName</th>
 							<th>LastName</th>
@@ -44,6 +49,8 @@
 							StudentBean bean = it.next();
 						%>
 						<tr>
+							<td><input type="checkbox" name="ids"
+								value="<%=bean.getId()%>"></td>
 							<td><%=bean.getId()%></td>
 							<td><%=bean.getFirstName()%></td>
 							<td><%=bean.getLastName()%></td>
@@ -62,6 +69,8 @@
 					<tr>
 						<td><input type="submit" class="btn-page" name="operation"
 							value="previous" <%=pageNo == 1 ? "disabled" : ""%>></td>
+						<td align="center"><input type="submit" class="btn-page"
+							name="operation" value="delete"></td>
 						<td align="right"><input type="submit" class="btn-page"
 							name="operation" value="next"
 							<%=list.size() < 5 ? "disabled" : ""%>></td>

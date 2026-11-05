@@ -55,18 +55,34 @@ public class MarkSheetListCtl extends HttpServlet {
 		System.out.println("pageNo after parse: " + pageNo);
 		int pageSize = 5;
 
+		if (op.equals("delete")) {
+			String[] ids = request.getParameterValues("ids");
+			if (ids != null && ids.length > 0) {
+				for (String id : ids) {
+					try {
+						model.delete(Integer.parseInt(id));
+						request.setAttribute("successMsg", "record deleted successfully");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}else {
+				request.setAttribute("errorMsg", "select atleast one record to delete");
+			}
+		}
+
 		if (op.equals("previous")) {
 			System.out.println("in previous");
 			pageNo--;
 			System.out.println("pageNo: " + pageNo);
 		}
-		
+
 		if (op.equals("next")) {
 			System.out.println("in next");
 			pageNo++;
 			System.out.println("pageNo: " + pageNo);
 		}
-		
+
 		try {
 			List<MarkSheetBean> list = model.search(bean, pageNo, pageSize);
 			request.setAttribute("marksheetList", list);
