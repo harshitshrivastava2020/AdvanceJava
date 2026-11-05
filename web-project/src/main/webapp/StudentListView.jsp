@@ -21,7 +21,7 @@
 	%>
 	<%@ include file="Header.jsp"%>
 
-	<form action="StudentListCtl" method="post">
+	<form action="StudentListCtl.do" method="post">
 		<input type="hidden" name="pageNo" value="<%=pageNo%>">
 
 		<div class="content-list-data" align="center">
@@ -40,6 +40,7 @@
 							<th>Age</th>
 							<th>Gender</th>
 							<th>City</th>
+							<th>edit</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -59,6 +60,7 @@
 							<td><%=bean.getAge()%></td>
 							<td><%=bean.getGender()%></td>
 							<td><%=bean.getCity()%></td>
+							<td><a href="StudentCtl.do?id=<%=bean.getId()%>">edit</a>
 						</tr>
 						<%
 						}

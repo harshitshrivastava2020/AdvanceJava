@@ -17,10 +17,10 @@
 		if (user != null) {
 		%>
 		<h2><%="Hii, " + user.getFirstName()%></h2>
-		<a href="MarkSheetCtl">Add MarkSheet</a> <span class="pipe">| </span>
-		<a href="MarkSheetListCtl">MarkSheet List</a> <span class="pipe">|
-		</span> <a href="StudentCtl">Add Student</a> <span class="pipe">| </span> <a
-			href="StudentListCtl">Student List</a> <span class="pipe">| </span> <a
+		<a href="MarkSheetCtl.do">Add MarkSheet</a> <span class="pipe">| </span>
+		<a href="MarkSheetListCtl.do">MarkSheet List</a> <span class="pipe">|
+		</span> <a href="StudentCtl.do">Add Student</a> <span class="pipe">| </span> <a
+			href="StudentListCtl.do">Student List</a> <span class="pipe">| </span> <a
 			href="LoginCtl?operation=logout">Logout</a> <span class="pipe">|
 		</span>
 		<%

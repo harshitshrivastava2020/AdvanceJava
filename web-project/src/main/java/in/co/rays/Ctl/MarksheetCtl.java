@@ -12,12 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.bean.MarkSheetBean;
 import in.co.rays.model.MarkSheetModel;
 
-@WebServlet("/MarkSheetCtl")
+@WebServlet("/MarkSheetCtl.do")
 public class MarkSheetCtl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		MarkSheetBean bean = new MarkSheetBean();
+		MarkSheetModel model = new MarkSheetModel();
+		String id = request.getParameter("id");
+
+		if (id != null) {
+			try {
+				bean = model.findByPk(Integer.parseInt(id));
+				request.setAttribute("bean", bean);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		RequestDispatcher rd = request.getRequestDispatcher("MarkSheetView.jsp");
 		rd.forward(request, response);
@@ -30,6 +43,7 @@ public class MarkSheetCtl extends HttpServlet {
 
 		MarkSheetBean bean = new MarkSheetBean();
 		MarkSheetModel model = new MarkSheetModel();
+		String op = request.getParameter("operation");
 
 		String name = request.getParameter("name");
 		String rollNoStr = request.getParameter("rollNo");
@@ -49,8 +63,14 @@ public class MarkSheetCtl extends HttpServlet {
 			bean.setChemistry(chemistry);
 			bean.setMaths(maths);
 
-			model.add(bean);
-			request.setAttribute("successMsg", "Marksheet record saved successfully");
+			if (op.equals("Update")) {
+				bean.setId(Integer.parseInt(request.getParameter("id")));
+				model.update(bean);
+				request.setAttribute("successMsg", "Marksheet record updated successfully");
+			} else {
+				model.add(bean);
+				request.setAttribute("successMsg", "Marksheet record saved successfully");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

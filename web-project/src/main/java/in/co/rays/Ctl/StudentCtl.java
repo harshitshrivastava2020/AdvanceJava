@@ -12,12 +12,26 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.bean.StudentBean;
 import in.co.rays.model.StudentModel;
 
-@WebServlet("/StudentCtl")
+@WebServlet("/StudentCtl.do")
 public class StudentCtl extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		StudentBean bean = new StudentBean();
+		StudentModel model = new StudentModel();
+		String id = request.getParameter("id");
+
+		if (id != null) {
+			try {
+				bean = model.findByPk(Integer.parseInt(id));
+				request.setAttribute("bean", bean);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 		RequestDispatcher rd = request.getRequestDispatcher("StudentView.jsp");
 		rd.forward(request, response);
@@ -29,6 +43,7 @@ public class StudentCtl extends HttpServlet {
 
 		StudentBean bean = new StudentBean();
 		StudentModel model = new StudentModel();
+		String op = request.getParameter("operation");
 
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
@@ -50,9 +65,15 @@ public class StudentCtl extends HttpServlet {
 			bean.setGender(gender);
 			bean.setCity(city);
 
-			model.add(bean);
-			request.setAttribute("successMsg", "Student record created successfully");
+			if (op.equals("Update")) {
+				bean.setId(Integer.parseInt(request.getParameter("id")));
+				model.update(bean);
+				request.setAttribute("successMsg", "Student record updated successfully");
 
+			} else {
+				model.add(bean);
+				request.setAttribute("successMsg", "Student record created successfully");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

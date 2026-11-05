@@ -75,7 +75,7 @@ public class MarkSheetModel {
 			conn.setAutoCommit(false);
 
 			PreparedStatement pstmt = conn.prepareStatement(
-					"update st_marksheet set rollNo = ?, name = ?, phy = ?, chm = ?, maths = ? where id = ?");
+					"update st_marksheet set rollNo = ?, name = ?, physics = ?, chemistry = ?, maths = ? where id = ?");
 			pstmt.setInt(1, bean.getRollNo());
 			pstmt.setString(2, bean.getName());
 			pstmt.setInt(3, bean.getPhysics());
@@ -139,8 +139,8 @@ public class MarkSheetModel {
 				bean.setId(rs.getInt("id"));
 				bean.setRollNo(rs.getInt("rollNo"));
 				bean.setName(rs.getString("name"));
-				bean.setPhysics(rs.getInt("phy"));
-				bean.setChemistry(rs.getInt("chm"));
+				bean.setPhysics(rs.getInt("physics"));
+				bean.setChemistry(rs.getInt("chemistry"));
 				bean.setMaths(rs.getInt("maths"));
 			}
 		} catch (SQLException e) {
@@ -170,8 +170,8 @@ public class MarkSheetModel {
 				bean.setId(rs.getInt("id"));
 				bean.setRollNo(rs.getInt("rollNo"));
 				bean.setName(rs.getString("name"));
-				bean.setPhysics(rs.getInt("phy"));
-				bean.setChemistry(rs.getInt("chm"));
+				bean.setPhysics(rs.getInt("physics"));
+				bean.setChemistry(rs.getInt("chemistry"));
 				bean.setMaths(rs.getInt("maths"));
 			}
 		} catch (SQLException e) {

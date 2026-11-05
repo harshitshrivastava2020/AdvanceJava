@@ -16,7 +16,7 @@ import in.co.rays.bean.UserBean;
 import in.co.rays.model.MarkSheetModel;
 import in.co.rays.model.UserModel;
 
-@WebServlet("/MarkSheetListCtl")
+@WebServlet("/MarkSheetListCtl.do")
 public class MarkSheetListCtl extends HttpServlet {
 
 	@Override

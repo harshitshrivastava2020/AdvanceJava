@@ -54,7 +54,7 @@ public class LoginCtl extends HttpServlet {
 				return;
 			} else {
 				System.out.println("Invalid Creadentials");
-				request.setAttribute("errorMsg", "Invalid Creadentials");
+				request.setAttribute("errorMsgCredintials", "Invalid Creadentials");
 
 			}
 		} catch (Exception e) {

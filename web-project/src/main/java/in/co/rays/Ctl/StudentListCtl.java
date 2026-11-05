@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import in.co.rays.bean.StudentBean;
 import in.co.rays.model.StudentModel;
 
-@WebServlet("/StudentListCtl")
+@WebServlet("/StudentListCtl.do")
 public class StudentListCtl extends HttpServlet {
 
 	@Override

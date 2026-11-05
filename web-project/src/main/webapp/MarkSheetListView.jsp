@@ -20,7 +20,7 @@
 	String errorMsg = (String) request.getAttribute("errorMsg");
 	%>
 	<%@ include file="Header.jsp"%>
-	<form action="MarkSheetListCtl" method="post">
+	<form action="MarkSheetListCtl.do" method="post">
 		<input type="hidden" name="pageNo" value="<%=pageNo%>">
 		<div class="content-list-data" align="center">
 			<div class="table-wrapper-container">
@@ -36,6 +36,7 @@
 							<th>Physics</th>
 							<th>Chemistry</th>
 							<th>Maths</th>
+							<th>edit</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,6 +54,7 @@
 							<td><%=bean.getPhysics()%></td>
 							<td><%=bean.getChemistry()%></td>
 							<td><%=bean.getMaths()%></td>
+							<td><a href="MarkSheetCtl.do?id=<%=bean.getId()%>">edit</a></td>
 						</tr>
 						<%
 						}
